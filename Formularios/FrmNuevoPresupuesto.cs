@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CarpinteriaCasa
+namespace CarpinteriaCasa.Formularios
 {
-    public partial class Form1 : Form
+    public partial class FrmNuevoPresupuesto : Form
     {
-        public Form1()
+        public FrmNuevoPresupuesto()
         {
             InitializeComponent();
         }
