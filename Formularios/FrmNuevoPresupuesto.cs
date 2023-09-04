@@ -22,6 +22,12 @@ namespace CarpinteriaCasa.Formularios
         {
             lblNroPresupuesto.Text += ProximoPresupuesto();
             CargarProductos();
+            txtFecha.Text = DateTime.Today.ToShortDateString();
+            txtCliente.Text = "CONSUMIDOR FINAL";
+            txtDescuento.Text = "0";
+            txtCantidad.Text = "1";
+            txtSubTotal.Text = "0";
+            txtTotal.Text = "0";
         }
 
        

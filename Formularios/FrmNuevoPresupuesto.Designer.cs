@@ -47,9 +47,9 @@
             this.ColAccion = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblSubTotal = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.dptFecha = new System.Windows.Forms.DateTimePicker();
             this.txtSubTotal = new System.Windows.Forms.TextBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtFecha = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,7 +84,7 @@
             // lblDescuento
             // 
             this.lblDescuento.AutoSize = true;
-            this.lblDescuento.Location = new System.Drawing.Point(93, 114);
+            this.lblDescuento.Location = new System.Drawing.Point(93, 121);
             this.lblDescuento.Name = "lblDescuento";
             this.lblDescuento.Size = new System.Drawing.Size(73, 13);
             this.lblDescuento.TabIndex = 3;
@@ -99,7 +99,7 @@
             // 
             // txtDescuento
             // 
-            this.txtDescuento.Location = new System.Drawing.Point(186, 107);
+            this.txtDescuento.Location = new System.Drawing.Point(186, 114);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(214, 20);
             this.txtDescuento.TabIndex = 2;
@@ -114,14 +114,14 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(481, 161);
+            this.txtCantidad.Location = new System.Drawing.Point(483, 162);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(150, 20);
             this.txtCantidad.TabIndex = 4;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(637, 158);
+            this.btnAgregar.Location = new System.Drawing.Point(639, 162);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(149, 23);
             this.btnAgregar.TabIndex = 5;
@@ -221,13 +221,6 @@
             this.lblTotal.TabIndex = 13;
             this.lblTotal.Text = "Total $";
             // 
-            // dptFecha
-            // 
-            this.dptFecha.Location = new System.Drawing.Point(186, 45);
-            this.dptFecha.Name = "dptFecha";
-            this.dptFecha.Size = new System.Drawing.Size(214, 20);
-            this.dptFecha.TabIndex = 0;
-            // 
             // txtSubTotal
             // 
             this.txtSubTotal.Location = new System.Drawing.Point(667, 361);
@@ -242,14 +235,21 @@
             this.txtTotal.Size = new System.Drawing.Size(115, 20);
             this.txtTotal.TabIndex = 8;
             // 
+            // txtFecha
+            // 
+            this.txtFecha.Location = new System.Drawing.Point(186, 45);
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(214, 20);
+            this.txtFecha.TabIndex = 14;
+            // 
             // FrmNuevoPresupuesto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.txtSubTotal);
-            this.Controls.Add(this.dptFecha);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblSubTotal);
             this.Controls.Add(this.dgvDetalles);
@@ -290,7 +290,6 @@
         private System.Windows.Forms.DataGridView dgvDetalles;
         private System.Windows.Forms.Label lblSubTotal;
         private System.Windows.Forms.Label lblTotal;
-        private System.Windows.Forms.DateTimePicker dptFecha;
         private System.Windows.Forms.TextBox txtSubTotal;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
@@ -298,5 +297,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColCantidad;
         private System.Windows.Forms.DataGridViewButtonColumn ColAccion;
+        private System.Windows.Forms.TextBox txtFecha;
     }
 }
