@@ -16,7 +16,8 @@ namespace CarpinteriaCasa
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Formularios.FrmPrincipal());
+            Application.Run(new Formularios.FrmNuevoPresupuesto()); // Aqui cambio que FORM CARGA 1RO
+
         }
     }
 }

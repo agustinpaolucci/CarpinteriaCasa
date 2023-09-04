@@ -40,16 +40,16 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.dgvDetalles = new System.Windows.Forms.DataGridView();
-            this.lblSubTotal = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.dptFecha = new System.Windows.Forms.DateTimePicker();
-            this.txtSubTotal = new System.Windows.Forms.TextBox();
-            this.txtTotal = new System.Windows.Forms.TextBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColAccion = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblSubTotal = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.dptFecha = new System.Windows.Forms.DateTimePicker();
+            this.txtSubTotal = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,9 +59,9 @@
             this.lblNroPresupuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNroPresupuesto.Location = new System.Drawing.Point(23, 9);
             this.lblNroPresupuesto.Name = "lblNroPresupuesto";
-            this.lblNroPresupuesto.Size = new System.Drawing.Size(174, 20);
+            this.lblNroPresupuesto.Size = new System.Drawing.Size(199, 20);
             this.lblNroPresupuesto.TabIndex = 0;
-            this.lblNroPresupuesto.Text = "PRESUPUESTO N° :";
+            this.lblNroPresupuesto.Text = "PRESUPUESTO N° :     ";
             // 
             // lblFecha
             // 
@@ -130,7 +130,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(218, 415);
+            this.btnAceptar.Location = new System.Drawing.Point(127, 386);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(173, 23);
             this.btnAceptar.TabIndex = 9;
@@ -139,7 +139,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(416, 415);
+            this.btnCancelar.Location = new System.Drawing.Point(325, 386);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(173, 23);
             this.btnCancelar.TabIndex = 10;
@@ -162,6 +162,44 @@
             this.dgvDetalles.ReadOnly = true;
             this.dgvDetalles.Size = new System.Drawing.Size(770, 150);
             this.dgvDetalles.TabIndex = 6;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "ID";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 130;
+            // 
+            // ColProducto
+            // 
+            this.ColProducto.HeaderText = "Producto";
+            this.ColProducto.Name = "ColProducto";
+            this.ColProducto.ReadOnly = true;
+            this.ColProducto.Width = 280;
+            // 
+            // ColPrecio
+            // 
+            this.ColPrecio.HeaderText = "Precio";
+            this.ColPrecio.Name = "ColPrecio";
+            this.ColPrecio.ReadOnly = true;
+            this.ColPrecio.Width = 150;
+            // 
+            // ColCantidad
+            // 
+            this.ColCantidad.HeaderText = "Cantidad";
+            this.ColCantidad.Name = "ColCantidad";
+            this.ColCantidad.ReadOnly = true;
+            this.ColCantidad.Width = 150;
+            // 
+            // ColAccion
+            // 
+            this.ColAccion.HeaderText = "Acciones";
+            this.ColAccion.Name = "ColAccion";
+            this.ColAccion.ReadOnly = true;
+            this.ColAccion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColAccion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColAccion.Width = 145;
             // 
             // lblSubTotal
             // 
@@ -204,44 +242,6 @@
             this.txtTotal.Size = new System.Drawing.Size(115, 20);
             this.txtTotal.TabIndex = 8;
             // 
-            // Id
-            // 
-            this.Id.HeaderText = "ID";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 130;
-            // 
-            // ColProducto
-            // 
-            this.ColProducto.HeaderText = "Producto";
-            this.ColProducto.Name = "ColProducto";
-            this.ColProducto.ReadOnly = true;
-            this.ColProducto.Width = 280;
-            // 
-            // ColPrecio
-            // 
-            this.ColPrecio.HeaderText = "Precio";
-            this.ColPrecio.Name = "ColPrecio";
-            this.ColPrecio.ReadOnly = true;
-            this.ColPrecio.Width = 150;
-            // 
-            // ColCantidad
-            // 
-            this.ColCantidad.HeaderText = "Cantidad";
-            this.ColCantidad.Name = "ColCantidad";
-            this.ColCantidad.ReadOnly = true;
-            this.ColCantidad.Width = 150;
-            // 
-            // ColAccion
-            // 
-            this.ColAccion.HeaderText = "Acciones";
-            this.ColAccion.Name = "ColAccion";
-            this.ColAccion.ReadOnly = true;
-            this.ColAccion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColAccion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColAccion.Width = 145;
-            // 
             // FrmNuevoPresupuesto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -265,7 +265,9 @@
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblNroPresupuesto);
             this.Name = "FrmNuevoPresupuesto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nuevo Presupuesto";
+            this.Load += new System.EventHandler(this.FrmNuevoPresupuesto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
