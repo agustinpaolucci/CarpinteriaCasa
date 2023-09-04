@@ -21,6 +21,7 @@ namespace CarpinteriaCasa.Formularios
         private void FrmNuevoPresupuesto_Load(object sender, EventArgs e)
         {
             lblNroPresupuesto.Text += ProximoPresupuesto();
+            CargarProductos();
         }
 
        
@@ -42,6 +43,23 @@ namespace CarpinteriaCasa.Formularios
             conexion.Close();
 
             return Convert.ToInt32(parametro.Value);
+        }
+
+        private void CargarProductos()
+        {
+            SqlConnection conexion = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=carpinteria_db;Integrated Security=True");
+            SqlCommand comando = new SqlCommand();
+            conexion.Open();
+            comando.Connection = conexion;
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = "SP_CONSULTAR_PRODUCTOS";
+            DataTable tabla = new DataTable();
+            tabla.Load(comando.ExecuteReader());
+            conexion.Close();
+            cboProductos.DataSource = tabla;
+            cboProductos.ValueMember = "id_producto"; // ojo los nombres, CHEQUEAR
+            cboProductos.DisplayMember = "n_producto"; // ojo los nombres, CHEQUEAR
+            cboProductos.DropDownStyle = ComboBoxStyle.DropDownList;
         }
     }
 }
