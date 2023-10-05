@@ -36,7 +36,8 @@ namespace CarpinteriaCasa.Formularios
        
         public int ProximoPresupuesto()
         {
-            SqlConnection conexion = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=carpinteria_db;Integrated Security=True");
+            SqlConnection conexion = new SqlConnection();
+            conexion.ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=carpinteria_db;Integrated Security=True";           
             conexion.Open();
             
             SqlCommand comando = new SqlCommand();
@@ -52,12 +53,12 @@ namespace CarpinteriaCasa.Formularios
 
             conexion.Close();
             return Convert.ToInt32(parametro.Value);
-            
         }
 
         private void CargarProductos()
         {
-            SqlConnection conexion = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=carpinteria_db;Integrated Security=True");
+            SqlConnection conexion = new SqlConnection();
+            conexion.ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=carpinteria_db;Integrated Security=True";
             SqlCommand comando = new SqlCommand();
             conexion.Open();
             comando.Connection = conexion;
@@ -224,15 +225,23 @@ namespace CarpinteriaCasa.Formularios
         public bool Confirmar()
         {
             bool resultado = true;
-            SqlConnection conexion = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=carpinteria_db;Integrated Security=True");
+            SqlConnection conexion = new SqlConnection();
 
+            // INSTANCIO UNA TRANSACCION CON NULO
+            SqlTransaction transaccion = null;
+            
             try
             {
+                conexion.ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=carpinteria_db;Integrated Security=True";
                 conexion.Open();
+
+                transaccion = conexion.BeginTransaction();
+
                 SqlCommand comandoMaestro = new SqlCommand();
                 comandoMaestro.Connection = conexion;
                 comandoMaestro.CommandType = CommandType.StoredProcedure;
                 comandoMaestro.CommandText = "SP_INSERTAR_MAESTRO";
+                comandoMaestro.Transaction = transaccion;
                 comandoMaestro.Parameters.AddWithValue("@cliente", nuevo.Cliente);
                 comandoMaestro.Parameters.AddWithValue("@dto", nuevo.Descuento);
                 comandoMaestro.Parameters.AddWithValue("total", nuevo.CalcularTotal() - nuevo.Descuento);
@@ -253,6 +262,7 @@ namespace CarpinteriaCasa.Formularios
                     comandoDetalle.Connection = conexion;
                     comandoDetalle.CommandType = CommandType.StoredProcedure;
                     comandoDetalle.CommandText = "SP_INSERTAR_DETALLE";
+                    comandoDetalle.Transaction = transaccion;
                     comandoDetalle.Parameters.AddWithValue("@presupuesto_nro", presupuestoNro);
                     comandoDetalle.Parameters.AddWithValue("@detalle", nroDetalle);
                     comandoDetalle.Parameters.AddWithValue("id_producto", det.Producto.ProductoNro);
@@ -261,18 +271,24 @@ namespace CarpinteriaCasa.Formularios
 
                     nroDetalle++;
                 }
+
+                // dentro del bloquye TRY, si está OKm que haga transaccion commit
+                transaccion.Commit();
             }
+
             catch (Exception)
             {
+                transaccion.Rollback();
                 resultado = false;
             }
+
             finally
             {
                 if(conexion != null && conexion.State == ConnectionState.Open)
                 {
-
+                    conexion.Close();
                 } 
-                  conexion.Close();  
+                    
             }
             return resultado;
         }
