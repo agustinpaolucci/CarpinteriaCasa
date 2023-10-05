@@ -8,29 +8,18 @@ namespace CarpinteriaCasa
 {
     public class DetallePresupuesto
     {
-        // ATRIBUTOS
-        private Producto producto;
-        private int cantidad;
-
-
-        // PROPERTIES
-        public Producto Producto { get => producto; set => producto = value; }
-        public int Cantidad { get => cantidad; set => cantidad = value; }
-
-
-        // CONSTRUCTOR CON PARAMETROS
-        public DetallePresupuesto(Producto producto, int cantidad)
+        public Producto Producto { get; set; }
+        public int Cantidad { get; set; }
+    
+        public DetallePresupuesto(Producto p, int cant)
         {
-            Producto = producto;
-            Cantidad = cantidad;
+            Producto = p;
+            Cantidad = cant;
         }
 
-        // METODOS DE CONTROL
         public double CalcularSubTotal()
         {
-            double subtotal = 0;
-            subtotal = Producto.Precio * cantidad;
-            return subtotal;
+            return Producto.Precio * Cantidad;
         }
     }
 }

@@ -7,59 +7,63 @@ using System.Windows.Forms;
 
 namespace CarpinteriaCasa
 {
-    class Presupuesto
+    public class Presupuesto
     {
-        // PROPERTIES
         public int PresupuestoNro { get; set; }
         public DateTime Fecha { get; set; }
         public string Cliente { get; set; }
         public double CostoMO { get; set; }
         public double Descuento { get; set; }
-        public DateTime FechaBaja { get; set; }
-        public List<DetallePresupuesto> Detalles { get; set; }
-        // Usamos una lista que es mas piola que una array. Porque es DINAMICA. El array es ESTATICO.
+        public DateTime fechaBaja { get; set; }
         
+        // vamos a tener una lista de DetallePresupuesto.
+
+        public List<DetallePresupuesto> Detalles { get; set; }
+
 
         public Presupuesto()
-        { 
-            Detalles = new List<DetallePresupuesto>(); 
-            // inicializo la lista con el constructor!.
-        }
-
-        // METODOS DE CONTROL
-        public void AgregarDetalle(DetallePresupuesto objetoDetallePresupuesto) //Pasandole por parametro un objeto DetallePresupuesto llamado detalle en este caso.
         {
-            Detalles.Add(objetoDetallePresupuesto);
+            Detalles = new List<DetallePresupuesto>();
         }
 
-        public void QuitarDetalle(int indice) // el int pasado como parametro indica EL INDICE (POSICION DE LA LISTA) A QUITAR EN LA LISTA!!!!
+        public void AgregarDetalle(DetallePresupuesto detalle)
         {
-            Detalles.RemoveAt(indice); // OJO REMOVE AT, NO REMOVE SOLO.
+            Detalles.Add(detalle);
         }
 
-        /*
-        USAMOS REMOTE AT porque REMOVE SOLO quita el PRIMER INDICE(POSICION) de la lista. 
-        REMOVE AT espera un INT que es el INDICE (INDEX) indicado.
-        */
+        public void QuitarDetalle(int indice)
+        {
+            Detalles.RemoveAt(indice);
+        }
 
-        //CALCULAR TOTAL CON CICLO FOR EACH
+
         public double CalcularTotal()
         {
-            double total = 0; 
-            foreach (DetallePresupuesto item in Detalles)
+            double total = 0;
+
+            for(int i = 0; i < Detalles.Count; i++)
             {
-                total = total + item.CalcularSubTotal();
-                // idem a: total += item.CalcularSubTotal();
+                    total += Detalles[i].CalcularSubTotal();
             }
             return total;
         }
+            // Podemos hacerlo con un foreach tambien.
+            //foreach (DetallePresupuesto item in Detalles)
+            //{
+            //    total += item.CalcularSubTotal();
+            //}
+            //return total;
 
-        public void Confirmar()
+
+        public double CalcularTotalConDescuento()
         {
-
+            double final = this.CalcularTotal();
+            if (Descuento > 0)
+            {
+                final -= final * Descuento / 100;
+            }
+            return final;
         }
-
-
 
     }
 }

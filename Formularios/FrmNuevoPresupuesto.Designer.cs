@@ -40,16 +40,16 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.dgvDetalles = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColAccion = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblSubTotal = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtSubTotal = new System.Windows.Forms.TextBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.txtFecha = new System.Windows.Forms.TextBox();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColAccion = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,6 +118,7 @@
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(150, 20);
             this.txtCantidad.TabIndex = 4;
+            this.txtCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnAgregar
             // 
@@ -127,13 +128,14 @@
             this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnAceptar
             // 
             this.btnAceptar.Location = new System.Drawing.Point(127, 386);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(173, 23);
-            this.btnAceptar.TabIndex = 9;
+            this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             // 
@@ -142,7 +144,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(325, 386);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(173, 23);
-            this.btnCancelar.TabIndex = 10;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -162,6 +164,49 @@
             this.dgvDetalles.ReadOnly = true;
             this.dgvDetalles.Size = new System.Drawing.Size(770, 150);
             this.dgvDetalles.TabIndex = 6;
+            this.dgvDetalles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalles_CellContentClick);
+            // 
+            // lblSubTotal
+            // 
+            this.lblSubTotal.AutoSize = true;
+            this.lblSubTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubTotal.Location = new System.Drawing.Point(549, 361);
+            this.lblSubTotal.Name = "lblSubTotal";
+            this.lblSubTotal.Size = new System.Drawing.Size(112, 20);
+            this.lblSubTotal.TabIndex = 9;
+            this.lblSubTotal.Text = "Sub - Total $";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(597, 388);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(64, 20);
+            this.lblTotal.TabIndex = 13;
+            this.lblTotal.Text = "Total $";
+            // 
+            // txtSubTotal
+            // 
+            this.txtSubTotal.Location = new System.Drawing.Point(667, 361);
+            this.txtSubTotal.Name = "txtSubTotal";
+            this.txtSubTotal.Size = new System.Drawing.Size(115, 20);
+            this.txtSubTotal.TabIndex = 8;
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Location = new System.Drawing.Point(667, 388);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(115, 20);
+            this.txtTotal.TabIndex = 9;
+            // 
+            // txtFecha
+            // 
+            this.txtFecha.Enabled = false;
+            this.txtFecha.Location = new System.Drawing.Point(186, 45);
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(214, 20);
+            this.txtFecha.TabIndex = 0;
             // 
             // Id
             // 
@@ -199,48 +244,9 @@
             this.ColAccion.ReadOnly = true;
             this.ColAccion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColAccion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColAccion.Text = "QUITAR";
+            this.ColAccion.UseColumnTextForButtonValue = true;
             this.ColAccion.Width = 145;
-            // 
-            // lblSubTotal
-            // 
-            this.lblSubTotal.AutoSize = true;
-            this.lblSubTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubTotal.Location = new System.Drawing.Point(549, 361);
-            this.lblSubTotal.Name = "lblSubTotal";
-            this.lblSubTotal.Size = new System.Drawing.Size(112, 20);
-            this.lblSubTotal.TabIndex = 9;
-            this.lblSubTotal.Text = "Sub - Total $";
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(597, 388);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(64, 20);
-            this.lblTotal.TabIndex = 13;
-            this.lblTotal.Text = "Total $";
-            // 
-            // txtSubTotal
-            // 
-            this.txtSubTotal.Location = new System.Drawing.Point(667, 361);
-            this.txtSubTotal.Name = "txtSubTotal";
-            this.txtSubTotal.Size = new System.Drawing.Size(115, 20);
-            this.txtSubTotal.TabIndex = 7;
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Location = new System.Drawing.Point(667, 388);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(115, 20);
-            this.txtTotal.TabIndex = 8;
-            // 
-            // txtFecha
-            // 
-            this.txtFecha.Location = new System.Drawing.Point(186, 45);
-            this.txtFecha.Name = "txtFecha";
-            this.txtFecha.Size = new System.Drawing.Size(214, 20);
-            this.txtFecha.TabIndex = 14;
             // 
             // FrmNuevoPresupuesto
             // 
@@ -265,7 +271,7 @@
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblNroPresupuesto);
             this.Name = "FrmNuevoPresupuesto";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Presupuesto";
             this.Load += new System.EventHandler(this.FrmNuevoPresupuesto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).EndInit();
@@ -292,11 +298,11 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.TextBox txtSubTotal;
         private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColCantidad;
         private System.Windows.Forms.DataGridViewButtonColumn ColAccion;
-        private System.Windows.Forms.TextBox txtFecha;
     }
 }
