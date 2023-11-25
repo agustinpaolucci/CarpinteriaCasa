@@ -254,7 +254,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(804, 451);
             this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.txtSubTotal);
@@ -272,6 +272,8 @@
             this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblNroPresupuesto);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FrmNuevoPresupuesto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Presupuesto";
