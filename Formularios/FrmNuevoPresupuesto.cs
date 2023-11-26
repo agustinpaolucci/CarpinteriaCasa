@@ -196,7 +196,7 @@ namespace CarpinteriaCasa.Formularios
 
 
         // 4) BOTON QUITAR DE LA GRILLA.
-        // TOCANDO EN LA GRILLA, YENDO EN PROPIEDADES >>> EVENTOS >>> CELL CONTENT CLICK
+        // TOCANDO EN LA GRILLA >>> PROPIEDADES >>> EVENTOS >>> CELL CONTENT CLICK
         private void dgvDetalles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             {
@@ -223,7 +223,7 @@ namespace CarpinteriaCasa.Formularios
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            //1)
+            //1) VALIDACIONES
             if (string.IsNullOrWhiteSpace(txtCliente.Text))
             {
                 MessageBox.Show("Debe ingresar un CLIENTE", "Control",
@@ -260,24 +260,12 @@ namespace CarpinteriaCasa.Formularios
         public bool Confirmar()
         {
             bool resultado = true;
-            SqlConnection cnn = new SqlConnection();
-            SqlTransaction transaccion = null;
-            // DEBEN IR AFUERA DEL TRY PORQUE TAMBIEN HAY cnn y transaccion en CATCH Y FINALLY
+         
+            SqlConnection cnn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=carpinteria_db;Integrated Security=True");
+            SqlTransaction transaccion = null; // IMPORTANTE, LA CREAMOS EN NULL
             
-
-            /////////////////////////////////////////////////////////////////////
-            // 
-            //  BLOQUE TRY/ CATCH /FINALLY
-            //  BOOL RESULTADO ES TRUE.
-            //  SI SALE POR TRY SIGUE EN TRUE, HACE EL COMMIT PORQUE ESTA TODO OK.
-            //  SI SALE POR CATCH HACE EL ROLLBACK Y RESULTADO ES FALSE.
-            //  Y AL FINAL DEBE DEVOLVER RESULTADO.
-            //
-            /////////////////////////////////////////////////////////////////////
-
             try
             {
-                cnn.ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=carpinteria_db;Integrated Security=True";
                 cnn.Open();
 
                 transaccion = cnn.BeginTransaction();
@@ -320,12 +308,13 @@ namespace CarpinteriaCasa.Formularios
 
                     numeroDetalle++;
                 }
-                // SI ESTA TODO OK, DENTRO DEL TRY QUE HAGA EL COMMIT.
+                // TRY >>> COMMIT!
                 transaccion.Commit();
             }
 
             catch (Exception)
             {
+                // SI SALIO ALGO MAL, CATCH CON UN ROLLBACK.
                 transaccion.Rollback();
                 resultado = false;
             }
@@ -336,8 +325,8 @@ namespace CarpinteriaCasa.Formularios
                 {
                     cnn.Close();
                 } 
-                    
             }
+            // FINALLY SIEMPRE CIERRA LA CONEXION.
             return resultado;
         }
 
@@ -379,8 +368,8 @@ namespace CarpinteriaCasa.Formularios
         /////////////////////////////////////////////////////////////////////
         // Propiedades VISUALES FORMULARIO:
         // StartPosition: CenterParent
-        //  Maximize Box: False
-        // MinimizeBox: True
+        // Maximize Box: False
+        // MinimizeBox: False
         // FormerBorderStyle: FixedSingle
         /////////////////////////////////////////////////////////////////////
 

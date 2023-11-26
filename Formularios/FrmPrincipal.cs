@@ -29,5 +29,16 @@ namespace CarpinteriaCasa.Formularios
         {
             this.Close();
         }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConsultarPresupuesto frmConsulta = new FrmConsultarPresupuesto();
+            frmConsulta.ShowDialog();
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

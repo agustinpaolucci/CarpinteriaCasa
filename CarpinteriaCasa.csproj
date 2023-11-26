@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidades\DetallePresupuesto.cs" />
+    <Compile Include="Formularios\FrmConsultarPresupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmConsultarPresupuesto.Designer.cs">
+      <DependentUpon>FrmConsultarPresupuesto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmNuevoPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\FrmConsultarPresupuesto.resx">
+      <DependentUpon>FrmConsultarPresupuesto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmNuevoPresupuesto.resx">
       <DependentUpon>FrmNuevoPresupuesto.cs</DependentUpon>
     </EmbeddedResource>

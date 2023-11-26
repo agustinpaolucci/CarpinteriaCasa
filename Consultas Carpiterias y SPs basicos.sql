@@ -1,5 +1,5 @@
 USE carpinteria_db;
-GO;
+
 
 USE carpinteria_db;
 
